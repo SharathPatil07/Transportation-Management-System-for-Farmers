@@ -1,0 +1,89 @@
++----------------------------------------------------------+
+|                        TrainSystem                       |
++----------------------------------------------------------+
+| - Traines[10]: Train*                                    |
+| - TrainCount: int                                        |
+| - ticketCounter: int                                     |
++----------------------------------------------------------+
+| + getInstance(): TrainSystem&                            |
+| + addTrain(train: Train*): void                          |
+| + getTrain(TrainNumber: int): Train*                     |
+| + findTrainesByRoute(from: string, to: string): bool     |
+| + findTrainNumber(TrainNumber: int): int                 |
+| + printTicketDetails(t: ticket*): void                   |
+| + bookSeatForTicket(TrainNumber: int, seatNumber: int,   |
+|      name: string, contact: string, gender: string,      |
+|      age: int): ticket*                                  |
+| + cancelBookingByTicketNumber(ticketNumber: int): void   |
+| + viewTrainDetails(): void                               |
+| + selectSeat(TrainNumber: int): void                     |
+| + getTicketByNumber(ticketNumber: int): ticket*          |
+| + viewPassengerListByTrain(TrainNumber: int): int        |
++----------------------------------------------------------+
+                               ^
+                               |
+                               |
+             +------------------------------------+
+             |                Train               |
+             +------------------------------------+
+             | - TrainNo: int                     |
+             | - type: string                     |
+             | - no_of_seats: int                 |
+             | - ticketprice: float               |
+             | - seats[14]: Seat*                 |
+             | - TrainSchedule: schedule          |
+             +------------------------------------+
+             | + getTrainNumber(): int            |
+             | + getFrom(): string                |
+             | + getTo(): string                  |
+             | + getTime(): string                |
+             | + getTicketPrice(): float          |
+             | + getType(): string                |
+             | + getSeat(seatNumber: int): Seat*  |
+             | + getAvailableSeats(): int         |
+             | + viewPassengerList(): void        | 
+             +------------------------------------+
+                               ^
+                               |
+                               |
+           +-----------------------------------+----------------------------------------+
+           |               schedule            |    Passenger                           |
+           +-----------------------------------+----------------------------------------+
+           | - from: string                    | - name: string                         |
+           | - to: string                      | - phoneno: string                      |
+           | - timing: string                  | - gender: string                       |
+           +-----------------------------------+ - age: int                             |
+                                               | - ticketNumber: int                    |
+                                               +----------------------------------------+
+                                               | + getName(): string                    |
+                                               | + getGender(): string                  |
+                                               | + getContact(): string                 |
+                                               | + getAge(): int                        |
+                                               | + setTicketNumber(ticketNo: int): void |
+                                               | + getTicketNumber(): int               |
+                                               +----------------------------------------+
+										^
+                                                                                |
+                                                                                |
+                          +---------------------------------+---------------------------+--------------------+  
+                          |          Seat                   |           ticket          |        payment     |
+                          +---------------------------------+---------------------------+--------------------+
+                          | - seatNo: int                   | - ticketNo: int           |                    |
+                          | - isbooked: bool                | - train: Train*           |                    |
+                          | - passenger: Passenger*         | - seat: Seat*             |                    |
+                          +---------------------------------+---------------------------+--------------------+
+                          | + isSeatBooked(): bool          | + getTicketNumber(): int  |                    |
+                          | + bookSeat(p: Passenger*): void | + getTrain(): Train*      |                    |
+                          | + getPassenger(): Passenger*    | + getSeat(): Seat*        |                    |
+                          | + getSeatNumber(): int          |                           |                    |
+                          | + cancelSeatBooking(): void     |                           |                    |
+                          +---------------------------------+---------------------------+--------------------+
+                                                                                                ^
+                                                                                                |
+                                        +---------------------------------------------------+---------------------------------------+
+                                        |              UPIPayment                           |           CardPayment                 |
+                                        +---------------------------------------------------+---------------------------------------+
+                                        | - UPId: string                                    | - cardNo: int                         |
+                                        +---------------------------------------------------+---------------------------------------+
+                                        | + processPayment(amount: double): void            |+ processPayment(amount: double): void |
+                                        +---------------------------------------------------+---------------------------------------+
